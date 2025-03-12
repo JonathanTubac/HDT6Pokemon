@@ -22,7 +22,7 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         List<Pokemon> pokemons = null;
-        pokemons = PokemonLoader.loadPokemonsFromCSV("pokemon-hdt6/src/main/java/uvg/edu/pokemon_data_pokeapi.csv");
+        pokemons = PokemonLoader.loadPokemonsFromCSV("src/main/java/uvg/edu/pokemon_data_pokeapi.csv");
 
         System.out.print("Seleccione la implementación de Map (HashMap, TreeMap, LinkedHashMap): ");
         String mapType = scanner.nextLine();
