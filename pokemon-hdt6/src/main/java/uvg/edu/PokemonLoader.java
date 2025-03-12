@@ -1,21 +1,32 @@
+/**
+ * Jonathan Javier Tubac Arreaza 24484
+ */
 package uvg.edu;
+
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
+/**
+ * The PokemonLoader class provides a method to load Pokémon data from a CSV file.
+ */
 public class PokemonLoader {
+
+    /**
+     * Loads Pokémon data from a CSV file and returns a list of Pokémon objects.
+     *
+     * @param filePath The path to the CSV file containing Pokémon data.
+     * @return A list of Pokémon objects loaded from the CSV file.
+     */
     public static List<Pokemon> loadPokemonsFromCSV(String filePath) {
         List<Pokemon> pokemons = new ArrayList<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
-            br.readLine(); // Para leer la cabecera y evitar procesarla
+            br.readLine(); 
     
             while ((line = br.readLine()) != null) {
-                // Usamos una expresión regular para dividir la línea correctamente
                 String[] values = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
     
-                // Verificar si hay suficientes valores (10 columnas)
                 if (values.length >= 10) {
                     try {
                         String name = values[0].trim();
@@ -26,14 +37,12 @@ public class PokemonLoader {
                         double height_meters = Double.parseDouble(values[5].trim());
                         double weight_kg = Double.parseDouble(values[6].trim());
     
-                        // El campo de habilidades contiene varias habilidades separadas por comas
                         String[] abilityArray = values[7].replace("\"", "").split(",");
                         List<String> abilities = Arrays.asList(abilityArray);
     
                         int generation = Integer.parseInt(values[8].trim());
                         String is_legendary = values[9].trim();
     
-                        // Crear el objeto Pokémon con los datos extraídos
                         Pokemon pokemon = new Pokemon(name, pokedex_num, type1, type2, classification, 
                                                       height_meters, weight_kg, abilities, generation, is_legendary);
                         pokemons.add(pokemon);
@@ -48,5 +57,4 @@ public class PokemonLoader {
         
         return pokemons;
     }
-    
 }

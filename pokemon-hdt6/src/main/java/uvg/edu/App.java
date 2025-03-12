@@ -1,21 +1,29 @@
+/**
+ * Jonathan Javier Tubac Arreaza 24484
+ */
 package uvg.edu;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
-
+/**
+ * The App class is the main entry point for the Pokémon management application.
+ * It allows users to interact with a collection of Pokémon through a console-based menu.
+ * Users can add Pokémon to their collection, view details of specific Pokémon, and perform various other operations.
+ */
 public class App {
+    /**
+     * The main method that runs the Pokémon management application.
+     * It provides a console-based menu for users to interact with their Pokémon collection.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Map<String, Pokemon> coleccionUsuario = new HashMap<>();
         List<Pokemon> pokemons = null;
-        pokemons = PokemonLoader.loadPokemonsFromCSV("src/main/java/uvg/edu/pokemon_data_pokeapi.csv");
+        pokemons = PokemonLoader.loadPokemonsFromCSV("pokemon-hdt6/src/main/java/uvg/edu/pokemon_data_pokeapi.csv");
 
-        // Solicitar la implementación de Map que el usuario desea
         System.out.print("Seleccione la implementación de Map (HashMap, TreeMap, LinkedHashMap): ");
         String mapType = scanner.nextLine();
 
@@ -33,7 +41,7 @@ public class App {
             System.out.println("7. Salir");
 
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea
+            scanner.nextLine(); 
 
             switch (opcion) {
                 case 1:
@@ -59,15 +67,15 @@ public class App {
                     manager.showCollectionSortedByType();
                     break;
                 case 4:
-                    PokemonManager.showAllPokemonsSortedByType(pokemons); // Llamar al método de PokemonManager
+                    PokemonManager.showAllPokemonsSortedByType(pokemons); 
                     break;
                 case 5:
                     System.out.println("Ingrese la habilidad que desea buscar: ");
                     String habilidad = scanner.nextLine();
-                    PokemonManager.showPokemonByAbility(pokemons, habilidad); // Llamar al método de PokemonManager
+                    PokemonManager.showPokemonByAbility(pokemons, habilidad); 
                     break;
                 case 6:
-                    PokemonManager.printPokemonCollection(); // Llamar al método para ver la colección del usuario
+                    PokemonManager.printPokemonCollection(); 
                     break;
                 case 7:
                     continuar = false;
