@@ -18,6 +18,7 @@ public class PokemonLoader {
      * @return A list of Pokémon objects loaded from the CSV file.
      */
     public static List<Pokemon> loadPokemonsFromCSV(String filePath) {
+        long inicio = System.nanoTime();
         List<Pokemon> pokemons = new ArrayList<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -55,6 +56,10 @@ public class PokemonLoader {
             e.printStackTrace();
         }
         
+        long fin = System.nanoTime();
+        System.out.println("tiempo de ejecución: " + (fin - inicio));
+
         return pokemons;
+        
     }
 }

@@ -19,6 +19,7 @@ public class App {
      * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
 
         List<Pokemon> pokemons = null;
@@ -67,7 +68,10 @@ public class App {
                     manager.showCollectionSortedByType();
                     break;
                 case 4:
+                    long inicio4 = System.nanoTime();
                     PokemonManager.showAllPokemonsSortedByType(pokemons); 
+                    long fin4 = System.nanoTime();
+                    System.out.println("Tiempo de ejecución: " + (fin4 - inicio4));
                     break;
                 case 5:
                     System.out.println("Ingrese la habilidad que desea buscar: ");
